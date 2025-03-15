@@ -70,11 +70,12 @@
     let current = '';
     
     sections.forEach(section => {
-      const sectionTop = section.offsetTop;
+      const sectionTop = (section as HTMLElement).offsetTop;
       const sectionHeight = section.clientHeight;
       
       if (scrollY >= sectionTop - 200) {
-        current = section.getAttribute('id');
+        const id = section.getAttribute('id');
+        if (id) current = id;
       }
     });
     
